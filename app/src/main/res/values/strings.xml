@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">五子棋</string>
+    <string name="AI_mode">人机对战</string>
+    <string name="People_mode">人人对战</string>
+    <string name="retract">悔棋</string>
+    <string name="mode">对战模式</string>
+</resources>
