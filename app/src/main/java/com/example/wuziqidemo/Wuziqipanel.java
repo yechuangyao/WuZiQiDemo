@@ -432,8 +432,8 @@ public class Wuziqipanel extends View {
                 }
             }
         }
-        if (mIsGameOver){
-            mIsGameOver=false;
+        if (mIsGameOver) {
+            mIsGameOver = false;
         }
     }
 
