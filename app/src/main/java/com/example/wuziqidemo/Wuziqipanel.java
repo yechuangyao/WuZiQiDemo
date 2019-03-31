@@ -43,7 +43,7 @@ public class Wuziqipanel extends View {
 
     private Point LastPoint;        //当前下的最后一个棋子
 
-    private boolean mIsGameOver;        //判断游戏结束变量
+    private boolean mIsGameOver;        //判断游戏是否结束变量
     private boolean mIsWhiteWinner;     //判断胜负方，true则白棋胜，否则黑棋胜
 
     public int[][] StateBoard = new int[MAX_LINE][MAX_LINE]; //棋盘状态二维数组
@@ -101,8 +101,8 @@ public class Wuziqipanel extends View {
      * 监察棋盘的宽高大小变化，确定棋子的大小
      */
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
+    protected void onSizeChanged(int w, int h, int old_w, int old_h) {
+        super.onSizeChanged(w, h, old_w, old_h);
 
         mPanelWidth = w;
         mLineHeight = mPanelWidth * 1.0f / MAX_LINE;
@@ -160,7 +160,9 @@ public class Wuziqipanel extends View {
         drawBoard(canvas);
         drawPiece(canvas);
         new MyAsyncTask().execute();
-        checkGameOver();        //检查是否游戏结束
+        if (!mIsGameOver) {
+            checkGameOver();        //检查是否游戏结束
+        }
     }
 
     /*
@@ -429,6 +431,9 @@ public class Wuziqipanel extends View {
                     invalidate();
                 }
             }
+        }
+        if (mIsGameOver){
+            mIsGameOver=false;
         }
     }
 
